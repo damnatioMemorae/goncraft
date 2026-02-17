@@ -1,12 +1,20 @@
 # TODO
 
-# Visual
+## Visual
 
 - shading
 - skybox
 - flip
 
-# Other
+- UI
+    - REPL
+    - Settings
+    - Console
+
+- FIX
+    - Movement
+
+## Other
 
 - World generation (Perlin's noize)
 - Physics

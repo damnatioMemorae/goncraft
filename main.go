@@ -83,20 +83,22 @@ func (b *Block) Draw(screen *ebiten.Image, g *Game) {
 		float64(b.Z),
 	}
 
-	// for i, v := range vs {
-	//	p := v.Add(bv).Add(g.PlayerPosition).Rotate(g.PlayerRotation).Project()
-	//	p = p.ToScreen(screen)
-	//	vector.FillRect(
-	//		screen,
-	//		float32(p.X-S*0.5),
-	//		float32(p.Y-S*0.5),
-	//		float32(S),
-	//		float32(S),
-	//		brown,
-	//		false,
-	//	)
-	//	ebitenutil.DebugPrintAt(screen, fmt.Sprintf("%d", i), int(p.X), int(p.Y))
-	//}
+	/*
+	for i, v := range vs {
+		p := v.Add(bv).Add(g.PlayerPosition).Rotate(g.PlayerRotation).Project()
+		p = p.ToScreen(screen)
+		vector.FillRect(
+			screen,
+			float32(p.X-S*0.5),
+			float32(p.Y-S*0.5),
+			float32(S),
+			float32(S),
+			brown,
+			false,
+		)
+		ebitenutil.DebugPrintAt(screen, fmt.Sprintf("%d", i), int(p.X), int(p.Y))
+	}
+	//*/
 
 	for _, r := range fs {
 		pth := &vector.Path{}
@@ -227,6 +229,7 @@ func (g *Game) Update() error {
 	g.HandleMouseMove()
 	g.HandleMovement()
 	g.HandleJump()
+	g.HandleDescent()
 
 	return nil
 }
