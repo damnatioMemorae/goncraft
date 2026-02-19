@@ -11,27 +11,29 @@ const (
 	MIN_CAM_TILT = -math.Pi * 1.5
 )
 
-func (g *Game) HandleMouseMove() {
+
+
+func (c *Game) HandleMouseMove() {
 	xt, yt := ebiten.CursorPosition()
 	x := float64(xt)
 	y := float64(yt)
 
 	dt := float64(1) / float64(60)
 
-	g.PlayerRotation.X += (((g.Cursor.X - x) * dt) * math.Pi)
-	g.PlayerRotation.Y += (((g.Cursor.Y - y) * dt) * math.Pi)
+	c.PlayerRotation.X += (((c.Cursor.X - x) * dt) * math.Pi)
+	c.PlayerRotation.Y += (((c.Cursor.Y - y) * dt) * math.Pi)
 
-	if g.PlayerRotation.Y > MAX_CAM_TILT {
-		g.PlayerRotation.Y = MAX_CAM_TILT
-	} else if g.PlayerRotation.Y < MIN_CAM_TILT {
-		g.PlayerRotation.Y = MIN_CAM_TILT
+	if c.PlayerRotation.Y > MAX_CAM_TILT {
+		c.PlayerRotation.Y = MAX_CAM_TILT
+	} else if c.PlayerRotation.Y < MIN_CAM_TILT {
+		c.PlayerRotation.Y = MIN_CAM_TILT
 	}
 
-	g.Cursor.X = x
-	g.Cursor.Y = y
+	c.Cursor.X = x
+	c.Cursor.Y = y
 }
 
-func (g *Game) HandleMovement() {
+func (c *Camera) HandleMovement() {
 	dt := float64(1) / float64(60)
 
 	var dv *Vector3
@@ -50,7 +52,7 @@ func (g *Game) HandleMovement() {
 		return
 	}
 
-	g.PlayerPosition = g.PlayerPosition.Add(dv)
+	c. = c.PlayerPosition.Add(dv)
 }
 
 func (g *Game) HandleJump() {

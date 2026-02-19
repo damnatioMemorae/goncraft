@@ -184,6 +184,14 @@ func (b *Block) Draw(screen *ebiten.Image, g *Game) {
 	}
 }
 
+type Camera struct {
+	X float64
+	Y float64
+	Speed float64
+	Rotation *Vector2
+	Cursor *Vector2
+}
+
 type Game struct {
 	W              float64
 	H              float64
@@ -227,6 +235,15 @@ func (g *Game) Draw(screen *ebiten.Image) {
 
 func (g *Game) Update() error {
 	g.HandleMouseMove()
+	g.HandleMovement()
+	g.HandleJump()
+	g.HandleDescent()
+
+	return nil
+}
+
+ func (c *Camera) Update() error {
+	c.HandleMouseMove()
 	g.HandleMovement()
 	g.HandleJump()
 	g.HandleDescent()
